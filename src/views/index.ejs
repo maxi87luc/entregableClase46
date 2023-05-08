@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2><%= user.name %></h2>
+    <h3>Productos</h3>
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">nombre</th>
+            <th scope="col">descripcion</th>
+            <th scope="col">imagen</th>
+            <th scope="col">precio</th>
+            <th scope="col">stock disponible</th>
+            <th scope="col"></th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+            <% array.forEach((elemento)=> { %>
+                <tr>
+                    <td><%= elemento.name %></td>
+                    <td><%= elemento.description %></td>
+                    <td><%= elemento.description %> </td>
+                    <td><%= elemento.price %></td>
+                    <td><%= elemento.stock %></td>
+
+                    <td>
+                        <form action="/api/carrito/<%=cart._id%>/productos/<%=elemento._id%>" method="POST">                            
+                            <button type="submit" >Añadir al carrito</button>
+                        </form>
+                    </td>
+                </tr>
+                
+            <% }); %>
+
+         
+         
+        </tbody>
+      </table>
+
+      <a href="./logout"><input type="button" value="Logout"></a>
+      <a href="./api/carrito/<%=cart._id%>"><input type="button" value="Ir a tu Carrito"></a>
+
+   
+</body>
+</html>
